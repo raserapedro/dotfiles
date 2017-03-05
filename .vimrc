@@ -10,6 +10,7 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 " Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
+Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plugin 'vim-scripts/indentpython.vim'
 Plugin 'scrooloose/syntastic'
 Plugin 'nvie/vim-flake8'
@@ -17,8 +18,6 @@ Plugin 'jnurmine/Zenburn'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-fugitive'
-Plugin 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
-Plugin 'junegunn/fzf.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -26,22 +25,6 @@ call vundle#end()            " required
 " Direction in which to create new splits
 set splitbelow
 set splitright
-
-" KEY (RE)MAPPINGS
-" Split navigations
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
-
-" Change mapleader from \ to ,
-let mapleader=","
-
-" fzf key mapping 
-map <C-t> :FZF<CR>
-
-" 'Paste mode', for pasting big chunks of code
-set pastetoggle=<F2>
 
 " Write files, even when you forgot to sudo (use w!!)
 cmap w!! w !sudo tee % >/dev/null
@@ -55,11 +38,11 @@ set hidden
 " Highligh search items
 set hlsearch
 
+" Ignore case when searching
+set ignorecase
+
 " Show search matches as you type
 set incsearch
-
-" Clear search highlighting (press ,/)
-nmap <silent> ,/ :nohlsearch<CR>
 
 " Set command history size
 set history=1000
@@ -69,6 +52,18 @@ set undolevels=1000
 
 " Change the terminal's title
 set title
+
+" Height of the command bar
+set cmdheight=2
+
+" When scrolling, always show 7 lines above/below cursor
+set scrolloff=7
+
+" Always show status line
+set laststatus=2
+
+" Wrap lines
+set wrap
 
 " No backup files
 set nobackup
@@ -81,6 +76,9 @@ syntax on
 
 " Set encoding to something decent
 set encoding=utf-8
+
+" Use Unix as the standard file type
+set ffs=unix
 
 " C O L O R S B O I S ! !
 if has('gui_running')
@@ -96,20 +94,57 @@ call togglebg#map("<F5>")
 " Ignore files in NERDTree
 let NERDTreeIgnore=['\.pyc$', '\~$']
 
-" PLUGIN CONFIGS!
-" Syntastic
-set statusline+=%#Warningmsg#
-set statusline+={SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
 " Line numbering
-set nu
+set number
 
 " Ruler (good to know which column you're in)
 set ruler
+
+" Update file when it is changed outside of Vim
+set autoread
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" PLUGIN CONFIGS
+" Syntastic
+highlight link SyntasticErrorSign SignColumn
+highlight link SyntasticWarningSign SignColumn
+highlight link SyntasticStyleErrorSign SignColumn
+highlight link SyntasticStyleWarningSign SignColumn
+
+" END OF PLUING CONFIGS
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" KEY (RE)MAPPINGS
+" Split navigations
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+" Change mapleader from \ to ,
+let mapleader=","
+
+" fzf key mapping 
+map <C-t> :FZF<CR>
+
+" Clear search highlighting (press ,/)
+nmap <silent> ,/ :nohlsearch<CR>
+
+" 'Paste mode', for pasting big chunks of code
+set pastetoggle=<F2>
+
+" Use ,rn to toggle relativenumber
+map <leader>rn :set relativenumber!<CR>
+
+" END OF KEY (RE)MAPPINGS
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" FUNCTIONS
+
+" END OF FUNCTIONS
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 
 filetype plugin indent on    " required
