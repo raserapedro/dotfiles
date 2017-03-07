@@ -123,14 +123,24 @@ let g:ycm_autoclose_preview_window_after_completion=1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " KEY (RE)MAPPINGS
+
+" Change mapleader from \ to ,
+let mapleader=","
+
 " Split navigations
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
-" Change mapleader from \ to ,
-let mapleader=","
+" Edit .vimrc
+nnoremap <LEADER>ev :vsp $MYVIMRC<CR>
+
+" Source .vimrc
+nnoremap <LEADER>sv :source $MYVIMRC<CR>
+
+" Remap ESC to jk
+inoremap jk <ESC>
 
 " fzf key mapping 
 map <C-t> :FZF<CR>
