@@ -18,6 +18,7 @@ Plugin 'jnurmine/Zenburn'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-fugitive'
+Plugin 'Valloric/YouCompleteMe'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -100,6 +101,9 @@ set number
 " Ruler (good to know which column you're in)
 set ruler
 
+" Highlight current line
+set cursorline
+
 " Update file when it is changed outside of Vim
 set autoread
 
@@ -110,6 +114,9 @@ highlight link SyntasticErrorSign SignColumn
 highlight link SyntasticWarningSign SignColumn
 highlight link SyntasticStyleErrorSign SignColumn
 highlight link SyntasticStyleWarningSign SignColumn
+
+" YouCompleteMe
+let g:ycm_autoclose_preview_window_after_completion=1
 
 " END OF PLUING CONFIGS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
