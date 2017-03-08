@@ -15,10 +15,10 @@ Plugin 'vim-scripts/indentpython.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'scrooloose/syntastic'
 Plugin 'nvie/vim-flake8'
-Plugin 'jnurmine/Zenburn'
 Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-fugitive'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'jlanzarotta/bufexplorer'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'morhetz/gruvbox'
@@ -90,9 +90,6 @@ colorscheme gruvbox
 " Set background to dark
 set background=dark
 
-" Ignore files in NERDTree
-let NERDTreeIgnore=['\.pyc$', '\~$']
-
 " Line numbering
 set number
 
@@ -135,6 +132,9 @@ let g:airline#extensions#tabline#left_sep=' '
 let g:airline#extensions#tabline#left_alt_sep='|'
 let g:airline#extensions#tabline#fnamemod=':t'
 
+" Ignore files in NERDTree
+let NERDTreeIgnore=['\.pyc$', '\~$']
+
 " END OF PLUGIN CONFIGS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -162,6 +162,9 @@ inoremap jk <ESC>
 " fzf key mapping 
 map <C-t> :FZF<CR>
 
+" NERDTree mapping
+map <C-n> :NERDTreeToggle<CR>
+
 " Clear search highlighting (press ,/)
 nmap <silent> ,/ :nohlsearch<CR>
 
@@ -169,7 +172,7 @@ nmap <silent> ,/ :nohlsearch<CR>
 set pastetoggle=<F2>
 
 " Use ,rn to toggle relativenumber
-map <leader>rn :set relativenumber!<CR>
+map <LEADER>rn :set relativenumber!<CR>
 
 " END OF KEY (RE)MAPPINGS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
