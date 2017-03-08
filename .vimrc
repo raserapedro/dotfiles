@@ -12,13 +12,16 @@ Plugin 'gmarik/Vundle.vim'
 " Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
 Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plugin 'vim-scripts/indentpython.vim'
+Plugin 'vim-airline/vim-airline'
 Plugin 'scrooloose/syntastic'
 Plugin 'nvie/vim-flake8'
 Plugin 'jnurmine/Zenburn'
-Plugin 'altercation/vim-colors-solarized'
 Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-fugitive'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'flazz/vim-colorschemes'
+Plugin 'morhetz/gruvbox'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -81,16 +84,8 @@ set encoding=utf-8
 " Use Unix as the standard file type
 set ffs=unix
 
-" C O L O R S B O I S ! !
-if has('gui_running')
-	set background=dark
-	colorscheme solarized
-else
-	colorscheme zenburn
-endif
-
-" Switch between background colors
-call togglebg#map("<F5>")
+" Colorscheme
+colorscheme gruvbox
 
 " Ignore files in NERDTree
 let NERDTreeIgnore=['\.pyc$', '\~$']
@@ -118,7 +113,23 @@ highlight link SyntasticStyleWarningSign SignColumn
 " YouCompleteMe
 let g:ycm_autoclose_preview_window_after_completion=1
 
-" END OF PLUING CONFIGS
+" vim-gitgutter
+let g:gitgutter_enabled = 1
+let g:gitgutter_highlight_lines = 0
+
+" gruvbox
+let g:gruvbox_contrast_dark='dark'
+let g:gruvbox_hls_cursor='gray'
+let g:gruvbox_italic=1
+let g:gruvbox_improved_strings=1
+
+" vim-airline
+let g:airline#extensions#tabline#enabled=1
+let g:airline#extensions#tabline#left_sep=' '
+let g:airline#extensions#tabline#left_alt_sep='|'
+let g:airline#extensions#tabline#fnamemod=':t'
+
+" END OF PLUGIN CONFIGS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
