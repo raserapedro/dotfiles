@@ -87,6 +87,9 @@ set ffs=unix
 " Colorscheme
 colorscheme gruvbox
 
+" Set background to dark
+set background=dark
+
 " Ignore files in NERDTree
 let NERDTreeIgnore=['\.pyc$', '\~$']
 
@@ -101,6 +104,9 @@ set cursorline
 
 " Update file when it is changed outside of Vim
 set autoread
+
+" Lazy redraw
+set lazyredraw
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " PLUGIN CONFIGS
