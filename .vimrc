@@ -20,8 +20,8 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'jlanzarotta/bufexplorer'
 Plugin 'airblade/vim-gitgutter'
+Plugin 'scrooloose/nerdcommenter'
 Plugin 'flazz/vim-colorschemes'
-Plugin 'morhetz/gruvbox'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -45,6 +45,9 @@ set hlsearch
 " Ignore case when searching
 set ignorecase
 
+" When searching, try to be smart about cases
+set smartcase
+
 " Show search matches as you type
 set incsearch
 
@@ -54,8 +57,8 @@ set history=1000
 " Tons of undos, just for you
 set undolevels=1000
 
-" Change the terminal's title
-set title
+" Turn on the WiLd menu
+set wildmenu
 
 " Height of the command bar
 set cmdheight=2
@@ -66,6 +69,9 @@ set scrolloff=7
 " Always show status line
 set laststatus=2
 
+" Format the status line
+set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l\ \ Column:\ %c
+
 " Wrap lines
 set wrap
 
@@ -75,8 +81,13 @@ set nobackup
 set noswapfile
 
 " Enable syntax highlighting for Python
-let python_highlight_all=1
-syntax on
+"let python_highlight_all=1
+
+" Enable syntax highlighting
+syntax enable 
+
+" For regular expressions turn magic on
+set magic
 
 " Set encoding to something decent
 set encoding=utf-8
@@ -84,14 +95,11 @@ set encoding=utf-8
 " Use Unix as the standard file type
 set ffs=unix
 
-" Colorscheme
-colorscheme gruvbox
-
-" Set background to dark
-set background=dark
-
 " Line numbering
 set number
+
+" Add a bit extra margin to the left
+set foldcolumn=1
 
 " Ruler (good to know which column you're in)
 set ruler
@@ -104,6 +112,31 @@ set autoread
 
 " Lazy redraw
 set lazyredraw
+
+" COLORS AND FONTS
+" Enable 256-color palette
+
+" Truecolor support
+set termguicolors
+
+if $COLORTERM == 'xterm-256color'
+	set t_Co=256
+endif
+
+set background=dark
+
+try
+	colorscheme badwolf
+catch
+endtry
+
+" Set extra options when running in GUI mode
+if has("gui_running")
+	set guioptions-=T
+	set guioptions-=e
+	set t_Co=256
+	set guitablabel=%M\ %t
+endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " PLUGIN CONFIGS
@@ -119,12 +152,6 @@ let g:ycm_autoclose_preview_window_after_completion=1
 " vim-gitgutter
 let g:gitgutter_enabled = 1
 let g:gitgutter_highlight_lines = 0
-
-" gruvbox
-let g:gruvbox_contrast_dark='dark'
-let g:gruvbox_hls_cursor='gray'
-let g:gruvbox_italic=1
-let g:gruvbox_improved_strings=1
 
 " vim-airline
 let g:airline#extensions#tabline#enabled=1
@@ -150,14 +177,21 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
+" Fast saving
+nmap <LEADER>w :w!<CR>
+
+" Fast close
+nmap <LEADER>q :q<CR>
+
 " Edit .vimrc
 nnoremap <LEADER>ev :vsp $MYVIMRC<CR>
 
 " Source .vimrc
 nnoremap <LEADER>sv :source $MYVIMRC<CR>
 
-" Remap ESC to jk
+" Remap ESC to jk and JK 
 inoremap jk <ESC>
+inoremap JK <ESC> 
 
 " fzf key mapping 
 map <C-t> :FZF<CR>
@@ -166,7 +200,7 @@ map <C-t> :FZF<CR>
 map <C-n> :NERDTreeToggle<CR>
 
 " Clear search highlighting (press ,/)
-nmap <silent> ,/ :nohlsearch<CR>
+nmap <silent> <LEADER><CR> :nohlsearch<CR>
 
 " 'Paste mode', for pasting big chunks of code
 set pastetoggle=<F2>
@@ -182,6 +216,16 @@ map <LEADER>rn :set relativenumber!<CR>
 
 " END OF FUNCTIONS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Python - virtualenv support
+py << EOF
+import os
+import sys
+if 'VIRTUAL_ENV' in os.environ:
+    project_base_dir = os.environ['VIRTUAL_ENV']
+    activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
+    execfile(activate_this, dict(__file__=activate_this))
+EOF
 
 
 filetype plugin indent on    " required
