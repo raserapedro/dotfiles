@@ -162,6 +162,12 @@ let g:airline#extensions#tabline#fnamemod=':t'
 " Ignore files in NERDTree
 let NERDTreeIgnore=['\.pyc$', '\~$']
 
+" NERDCommenter
+" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 0
+" Use compact syntax for prettified multi-line comments
+let g:NERDCompactSexyComs = 1
+
 " END OF PLUGIN CONFIGS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
