@@ -22,6 +22,7 @@ Plugin 'jlanzarotta/bufexplorer'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'flazz/vim-colorschemes'
+Plugin 'ntpeters/vim-better-whitespace'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -69,6 +70,9 @@ set scrolloff=7
 " Always show status line
 set laststatus=2
 
+" Show visual ruler at 80
+set colorcolumn=80
+
 " Format the status line
 set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l\ \ Column:\ %c
 
@@ -84,7 +88,7 @@ set noswapfile
 "let python_highlight_all=1
 
 " Enable syntax highlighting
-syntax enable 
+syntax enable
 
 " For regular expressions turn magic on
 set magic
@@ -147,20 +151,20 @@ highlight link SyntasticStyleErrorSign SignColumn
 highlight link SyntasticStyleWarningSign SignColumn
 
 " YouCompleteMe
-let g:ycm_autoclose_preview_window_after_completion=1
+let g:ycm_autoclose_preview_window_after_completion = 1
 
 " vim-gitgutter
 let g:gitgutter_enabled = 1
 let g:gitgutter_highlight_lines = 0
 
 " vim-airline
-let g:airline#extensions#tabline#enabled=1
-let g:airline#extensions#tabline#left_sep=' '
-let g:airline#extensions#tabline#left_alt_sep='|'
-let g:airline#extensions#tabline#fnamemod=':t'
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline#extensions#tabline#fnamemod = ':t'
 
 " Ignore files in NERDTree
-let NERDTreeIgnore=['\.pyc$', '\~$']
+let NERDTreeIgnore = ['\.pyc$', '\~$']
 
 " NERDCommenter
 " Add spaces after comment delimiters by default
@@ -175,7 +179,7 @@ let g:NERDCompactSexyComs = 1
 " KEY (RE)MAPPINGS
 
 " Change mapleader from \ to ,
-let mapleader=","
+let mapleader = ","
 
 " Split navigations
 nnoremap <C-J> <C-W><C-J>
@@ -195,11 +199,11 @@ nnoremap <LEADER>ev :vsp $MYVIMRC<CR>
 " Source .vimrc
 nnoremap <LEADER>sv :source $MYVIMRC<CR>
 
-" Remap ESC to jk and JK 
+" Remap ESC to jk and JK
 inoremap jk <ESC>
-inoremap JK <ESC> 
+inoremap JK <ESC>
 
-" fzf key mapping 
+" fzf key mapping
 map <C-t> :FZF<CR>
 
 " NERDTree mapping
