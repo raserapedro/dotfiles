@@ -123,6 +123,7 @@ set lazyredraw
 " Truecolor support
 set termguicolors
 
+" Observation: try to always use xterm. Screen has issues with mod keys.
 if $COLORTERM == 'xterm-256color'
 	set t_Co=256
 endif
@@ -220,7 +221,7 @@ map <C-n> :NERDTreeToggle<CR>
 nmap <silent> <LEADER><CR> :nohlsearch<CR>
 
 " 'Paste mode', for pasting big chunks of code
-set pastetoggle=<F2>
+"set pastetoggle=<F2>
 
 " Use ,rn to toggle relativenumber
 map <LEADER>rn :set relativenumber!<CR>
