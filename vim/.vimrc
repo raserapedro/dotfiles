@@ -26,6 +26,9 @@ Plugin 'flazz/vim-colorschemes'
 Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'james9909/stackanswers.vim'
 
+" Emmet functionality.
+Plugin 'mattn/emmet-vim'
+
 " JS syntax highlighting and indentation.
 Plugin 'pangloss/vim-javascript'
 " React JSX syntax highlighting and indentation.
