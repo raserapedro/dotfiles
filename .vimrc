@@ -11,6 +11,7 @@ Plugin 'gmarik/Vundle.vim'
 
 " Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
 Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plugin 'danro/rename.vim'
 Plugin 'vim-scripts/indentpython.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'scrooloose/syntastic'
@@ -23,6 +24,12 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'ntpeters/vim-better-whitespace'
+Plugin 'james9909/stackanswers.vim'
+
+" JS syntax highlighting and indentation.
+Plugin 'pangloss/vim-javascript'
+" React JSX syntax highlighting and indentation.
+Plugin 'mxw/vim-jsx'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -83,9 +90,6 @@ set wrap
 set nobackup
 " No swap files
 set noswapfile
-
-" Enable syntax highlighting for Python
-"let python_highlight_all=1
 
 " Enable syntax highlighting
 syntax enable
@@ -158,6 +162,9 @@ highlight link SyntasticWarningSign SignColumn
 highlight link SyntasticStyleErrorSign SignColumn
 highlight link SyntasticStyleWarningSign SignColumn
 
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_python_checkers = ['flake8']
+
 " YouCompleteMe
 let g:ycm_autoclose_preview_window_after_completion = 1
 
@@ -179,6 +186,9 @@ let NERDTreeIgnore = ['\.pyc$', '\~$']
 let g:NERDSpaceDelims = 0
 " Use compact syntax for prettified multi-line comments
 let g:NERDCompactSexyComs = 1
+
+" Vim-jsx
+let g:jsx_ext_required = 0
 
 " END OF PLUGIN CONFIGS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
