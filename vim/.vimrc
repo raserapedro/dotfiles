@@ -12,10 +12,8 @@ Plugin 'gmarik/Vundle.vim'
 " Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
 Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plugin 'danro/rename.vim'
-Plugin 'vim-scripts/indentpython.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'scrooloose/syntastic'
-Plugin 'nvie/vim-flake8'
 Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-fugitive'
 Plugin 'Valloric/YouCompleteMe'
@@ -25,14 +23,22 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'james9909/stackanswers.vim'
+Plugin 'Raimondi/delimitMate'
+
+" Python
+Plugin 'vim-scripts/indentpython.vim'
+Plugin 'nvie/vim-flake8'
 
 " Emmet functionality.
 Plugin 'mattn/emmet-vim'
 
+" Javascript
 " JS syntax highlighting and indentation.
 Plugin 'pangloss/vim-javascript'
 " React JSX syntax highlighting and indentation.
 Plugin 'mxw/vim-jsx'
+" Better JS autocomplete.
+Plugin 'ternjs/tern_for_vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -192,6 +198,10 @@ let g:NERDCompactSexyComs = 1
 
 " Vim-jsx
 let g:jsx_ext_required = 0
+
+" delimitMate
+let delimitMate_expand_space = 1
+let delimitMate_expand_cr = 1
 
 " END OF PLUGIN CONFIGS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
