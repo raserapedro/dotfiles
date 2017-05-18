@@ -24,6 +24,7 @@ Plugin 'flazz/vim-colorschemes'
 Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'james9909/stackanswers.vim'
 Plugin 'Raimondi/delimitMate'
+Plugin 'tpope/vim-surround'
 
 " Python
 Plugin 'vim-scripts/indentpython.vim'
