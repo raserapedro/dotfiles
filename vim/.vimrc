@@ -227,9 +227,10 @@ set wildcharm=<C-Z>
 nnoremap <F10> :b <C-Z>
 
 " Buffers - explore/next/previous: Alt-F12, F12, Shift-F12.
-nnoremap <silent> <M-F12> :BufExplorer<CR>
+" nnoremap <silent> <M-F12> :BufExplorer<CR>
 nnoremap <silent> <F12> :bn<CR>
 nnoremap <silent> <S-F12> :bp<CR>
+nmap <LEADER>be :BufExplorer<CR>
 
 " Fast saving
 nmap <LEADER>w :w!<CR>
@@ -246,6 +247,9 @@ nnoremap <LEADER>sv :source $MYVIMRC<CR>
 " Remap ESC to jk and JK
 inoremap jk <ESC>
 inoremap JK <ESC>
+
+" Search for selected text.
+vnoremap <expr> // 'y/\V'.escape(@",'\').'<CR>'
 
 " fzf key mapping
 map <C-t> :FZF<CR>
